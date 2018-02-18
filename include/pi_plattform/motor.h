@@ -2,13 +2,15 @@
 #define MOTOR_H
 
 #include <wiringPi.h>
+#include <softPwm.h>
 
 #define MAXSPEED 200
+#define PWMCONVERSION 10
 
 class Motor
 {
 public:
-    Motor(int pinA, int pinB);
+    Motor(int pinA, int pinB, int pinPWM);
     ~Motor();
 
 

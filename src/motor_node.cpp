@@ -8,6 +8,7 @@
 #include "ros/ros.h"
 #include "pi_plattform/motor.h"
 #include "std_msgs/Int8.h"
+#include "wiringPi.h"
 
 Motor* m;
 
@@ -26,6 +27,7 @@ int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "motor");
 	ros::NodeHandle n("~");
+	wiringPiSetup();
 
 	int pinA, pinB, pinPWM;
 	if (!n.getParam("pinA", pinA)) {
@@ -40,7 +42,7 @@ int main(int argc, char **argv) {
 		ROS_WARN("No Pin supplied(PWM)");
 		return 1;
 	}
-
+	
 
 
 	m=new Motor(pinA,pinB,pinPWM);

@@ -1,4 +1,4 @@
-#include "encoder.h"
+#include "pi_plattform/encoder.h"
 
 #define RATE 1 /*!< Update interval [ms] */
 #define WHEEL_RADIUS 32.5 /*!< Wheel radius [mm] */
@@ -10,12 +10,10 @@ Encoder::Encoder(int nPinEncoderA, int nPinEncoderB)
     m_nPinEncoderA = nPinEncoderA;
     m_nPinEncoderB = nPinEncoderB;
 
-    if(isValid(nPinEncoderA) && isValid(nPinEncoderB)) {
-        pinMode(m_nPinEncoderA, INPUT);
-        pinMode(m_nPinEncoderB, INPUT);
-    } else {
-        std::cout << "Pin configuration not valid." << std::endl;
-    }
+    
+    pinMode(m_nPinEncoderA, INPUT);
+    pinMode(m_nPinEncoderB, INPUT);
+   
 
     //! Initialize QTimer thread
 
