@@ -1,0 +1,12 @@
+<launch> 
+	<node pkg="pi_plattform" type="encoder_node" name="left_encoder">
+		<rosparam> pinA: 7 </rosparam>
+		<rosparam> pinB: 0 </rosparam>
+	</node>
+
+	<node pkg="pi_plattform" type="encoder_node" name="right_encoder">
+		<rosparam> pinA: 2 </rosparam>
+		<rosparam> pinB: 3 </rosparam>
+	</node>
+
+</launch>

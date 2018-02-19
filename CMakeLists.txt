@@ -38,23 +38,23 @@ add_library(motorlib
 	src/motor.cpp
 )
 
-add_executable(motor src/motor_node.cpp)
-target_link_libraries(motor 
+add_executable(motor_node src/motor_node.cpp)
+target_link_libraries(motor_node 
 	${catkin_LIBRARIES} 
 	${WIRINGPI_LIBRARY}
 	motorlib
 )
-add_dependencies(motor wiringPi)
+add_dependencies(motor_node wiringPi)
 
 add_library(encoderlib
 	src/encoder.cpp
 )
 
-add_executable(encoder src/encoder_node.cpp)
-target_link_libraries(encoder 
+add_executable(encoder_node src/encoder_node.cpp)
+target_link_libraries(encoder_node 
 	${catkin_LIBRARIES} 
 	${WIRINGPI_LIBRARY}
 	encoderlib
 )
-add_dependencies(encoderlib wiringPi)
+add_dependencies(encoder_node wiringPi)
 

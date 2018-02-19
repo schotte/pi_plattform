@@ -11,8 +11,8 @@ Encoder::Encoder(int nPinEncoderA, int nPinEncoderB)
     m_nPinEncoderB = nPinEncoderB;
 
     
-//    pinMode(m_nPinEncoderA, INPUT);
-//    pinMode(m_nPinEncoderB, INPUT);
+    pinMode(m_nPinEncoderA, INPUT);
+    pinMode(m_nPinEncoderB, INPUT);
    
 
     //! Initialize QTimer thread
@@ -25,8 +25,8 @@ Encoder::~Encoder()
 
 void Encoder::readEncoder()
 {
-    int nEncoderA = 0;//digitalRead(m_nPinEncoderA);
-    int nEncoderB = 0;//digitalRead(m_nPinEncoderB);
+    int nEncoderA = digitalRead(m_nPinEncoderA);
+    int nEncoderB = digitalRead(m_nPinEncoderB);
     int nTicks = 0;
 
     //! Check if encoder value has changed and count ticks
