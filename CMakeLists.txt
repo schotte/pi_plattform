@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/pi/wiringPi)
+#FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/pi/wiringPi)
 
 catkin_package(
 #  INCLUDE_DIRS include
@@ -44,7 +44,7 @@ target_link_libraries(motor
 	${WIRINGPI_LIBRARY}
 	motorlib
 )
-add_dependencies(motor wiringPi)
+#add_dependencies(motor wiringPi)
 
 add_library(encoderlib
 	src/encoder.cpp
@@ -56,5 +56,5 @@ target_link_libraries(encoder
 	${WIRINGPI_LIBRARY}
 	encoderlib
 )
-add_dependencies(encoderlib wiringPi)
+#add_dependencies(encoderlib wiringPi)
 

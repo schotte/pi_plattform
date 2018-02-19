@@ -7,7 +7,7 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include "pi_plattform/encoder.h"
-#include "wiringPi.h
+//#include "wiringPi.h"
 
 ros::Publisher pub;
 Encoder *e;
@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "encoder");
 	ros::NodeHandle n("~");
-	wiringPiSetup();
+//	wiringPiSetup();
 
 	int pinA, pinB;
 	if (!n.getParam("pinA", pinA)) {
