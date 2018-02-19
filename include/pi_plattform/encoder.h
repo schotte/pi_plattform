@@ -4,6 +4,7 @@
 #include <wiringPi.h>
 #include <iostream>
 #include <vector>
+#include "ros/ros.h"
 
 /*!
  * \file Encoder.h
@@ -46,7 +47,7 @@ private:
 
     int m_nPreviousEncoderValueA;
     int m_nPreviousEncoderValueB;
-    int m_nLastTime; //! Milliseconds
+    ros::Time m_nLastTime; //! Milliseconds
 
 };
 

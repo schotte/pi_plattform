@@ -50,19 +50,19 @@ double Encoder::getTrueSpeed()
 {
     double dTrueSpeed;
 
-    int nCurrentTime = millis();
-    int nDeltaT = nCurrentTime - m_nLastTime;
+    ros::Time currentTime = ros::Time::now();
+    ros::Duration nDeltaT = currentTime - m_nLastTime;
 
     //! Calculate detected angle change for wheel and corresponding distance
     double nAngle = m_nTicks * 30.0 / GEAR_TRANSLATION;
     double nDistance = WHEEL_RADIUS * 2.0 * PI * (nAngle / 360.0);
 
     //! Calculate speed from distance and time increment since last measurement
-    m_dTrueSpeed = (nDistance) / (nDeltaT);
+    m_dTrueSpeed = (nDistance) / (nDeltaT.nsec);
 
     //! Reset tick counter
     m_nTicks = 0;
-    m_nLastTime = millis();
+    m_nLastTime = ros::Time::now();
     dTrueSpeed = m_dTrueSpeed;
 
     return dTrueSpeed;

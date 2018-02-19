@@ -7,12 +7,12 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include "pi_plattform/encoder.h"
-//#include "wiringPi.h"
+#include "wiringPi.h"
 
 ros::Publisher pub;
 Encoder *e;
 
-void timerCallback() {
+void timerCallback(const ros::TimerEvent& te) {
 	std_msgs::Float32 msg;
 	msg.data = e->getTrueSpeed();
 	pub.publish(msg);
@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "encoder");
 	ros::NodeHandle n("~");
-//	wiringPiSetup();
+	wiringPiSetup();
 
 	int pinA, pinB;
 	if (!n.getParam("pinA", pinA)) {
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 	e = new Encoder(pinA,pinB);
 
 	pub = n.advertise<std_msgs::Float32>("vel", 1);
-	ros::Timer timer = n.createTimer(ros::Duration(0.05), timerCallback);
+	ros::Timer timer = n.createTimer(ros::Duration(0.1), timerCallback);
 
 	while(ros::ok()) {
 
