@@ -5,17 +5,18 @@
 #define GEAR_TRANSLATION 340 /*!< Gear translation */
 #define PI 3.141
 
-Encoder::Encoder(int nPinEncoderA, int nPinEncoderB)
+Encoder::Encoder(int nPinEncoderA, int nPinEncoderB, float gearratio, float wheelradius)
 {
     m_nPinEncoderA = nPinEncoderA;
     m_nPinEncoderB = nPinEncoderB;
 
+    gearRatio = gearratio;
+    wheelRadius = wheelradius;
     
     pinMode(m_nPinEncoderA, INPUT);
     pinMode(m_nPinEncoderB, INPUT);
    
 
-    //! Initialize QTimer thread
 
 }
 
@@ -54,8 +55,8 @@ double Encoder::getTrueSpeed()
     ros::Duration nDeltaT = currentTime - m_nLastTime;
 
     //! Calculate detected angle change for wheel and corresponding distance
-    double nAngle = m_nTicks * 360 / GEAR_TRANSLATION ;
-    double nDistance = WHEEL_RADIUS * 2.0 * PI * (nAngle / 360.0);
+    double nAngle = m_nTicks * 360 / gearRatio ;
+    double nDistance = wheelRadius * 2.0 * PI * (nAngle / 360.0);
 
     //! Calculate speed from distance and time increment since last measurement
     m_dTrueSpeed = (nDistance) / (nDeltaT.nsec);

@@ -33,14 +33,24 @@ int main(int argc, char **argv) {
 		ROS_WARN("No Pin supplied(B)");
 		return 1;
 	}
-	ROS_INFO("A: %d, B:%d",pinA, pinB);
+	float wheel, gear;
+	if (!n.getParam("gearRatio", gear)) {
+		ROS_WARN("No Pin supplied(A)");
+		return 1;
+	}
+	if (!n.getParam("wheelRadius", wheel)) {
+		ROS_WARN("No Pin supplied(B)");
+		return 1;
+	}
+
+	ROS_INFO("A: %d, B:%d", pinA, pinB);
 	ros::Rate loop_rate(1000);
-	e = new Encoder(pinA,pinB);
+	e = new Encoder(pinA, pinB, gear, wheel);
 	ROS_INFO("Encoder are setup");
 	pub = n.advertise<std_msgs::Float32>("vel", 1);
 	ros::Timer timer = n.createTimer(ros::Duration(0.1), timerCallback);
 
-	while(ros::ok()) {
+	while (ros::ok()) {
 
 		e->readEncoder();
 

@@ -25,7 +25,7 @@ public:
       \param nPinEncoderA GPIO
       \param nPinEncoderB GPIO
     */
-    Encoder(int nPinEncoderA, int nPinEncoderB);
+    Encoder(int nPinEncoderA, int nPinEncoderB, float gearRatio, float wheelRadius);
 
     ~Encoder();
 
@@ -49,6 +49,7 @@ private:
     int m_nPreviousEncoderValueB;
     ros::Time m_nLastTime; //! Milliseconds
 
+    float gearRatio, wheelRadius;
 };
 
 #endif // ENCODER_H
