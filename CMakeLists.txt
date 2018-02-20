@@ -58,3 +58,13 @@ target_link_libraries(encoder_node
 )
 add_dependencies(encoder_node wiringPi)
 
+add_executable(motorcontroll_node src/motorcontroll_node.cpp)
+target_link_libraries(motorcontroll_node 
+	${catkin_LIBRARIES} 
+	
+)
+#add_dependencies(motorcontroll_node wiringPi)
+
+
+
+

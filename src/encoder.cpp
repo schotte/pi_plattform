@@ -2,7 +2,7 @@
 
 #define RATE 1 /*!< Update interval [ms] */
 #define WHEEL_RADIUS 32.5 /*!< Wheel radius [mm] */
-#define GEAR_TRANSLATION 120 /*!< Gear translation */
+#define GEAR_TRANSLATION 340 /*!< Gear translation */
 #define PI 3.141
 
 Encoder::Encoder(int nPinEncoderA, int nPinEncoderB)
@@ -54,7 +54,7 @@ double Encoder::getTrueSpeed()
     ros::Duration nDeltaT = currentTime - m_nLastTime;
 
     //! Calculate detected angle change for wheel and corresponding distance
-    double nAngle = m_nTicks * 30.0 / GEAR_TRANSLATION;
+    double nAngle = m_nTicks * 360 / GEAR_TRANSLATION ;
     double nDistance = WHEEL_RADIUS * 2.0 * PI * (nAngle / 360.0);
 
     //! Calculate speed from distance and time increment since last measurement

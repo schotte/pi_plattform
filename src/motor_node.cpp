@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
 
 	m=new Motor(pinA,pinB,pinPWM);
 
-	ros::Subscriber sub = n.subscribe("cmd", 1, callback);
+	ros::Subscriber sub = n.subscribe("pwm", 1, callback);
 
 	ros::spin();
 
