@@ -14,8 +14,14 @@
 	</node>
 
 	<node pkg="pi_plattform" type="motor_node" name="motor_left"> 
+		<rosparam> pinA: 13 </rosparam>
+		<rosparam> pinB: 14 </rosparam>
+		<rosparam> pinPWM: 12 </rosparam>
 	</node>
 	<node pkg="pi_plattform" type="motor_node" name="motor_right"> 
+		<rosparam> pinA: 21 </rosparam>
+		<rosparam> pinB: 22 </rosparam>
+		<rosparam> pinPWM: 23 </rosparam>
 	</node>
 	
 	<node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_left"> 
