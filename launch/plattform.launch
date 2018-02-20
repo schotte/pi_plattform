@@ -1,16 +1,16 @@
 <launch> 
-	<node pkg="pi_plattform" type="encoder_node" name="left_encoder">
+	<node pkg="pi_plattform" type="encoder_node" name="left_encoder" output="screen">
 		<rosparam> pinA: 7 </rosparam>
 		<rosparam> pinB: 0 </rosparam>
-		<rosparam> gearRatio: 340.0 </rosparam>
-		<rosparam> wheelRadius: 32.5 </rosparam>
+		<rosparam> gearRatio: 1500.0 </rosparam>
+		<rosparam> wheelRadius: 0.0326 </rosparam>
 	</node>
 
-	<node pkg="pi_plattform" type="encoder_node" name="right_encoder">
+	<node pkg="pi_plattform" type="encoder_node" name="right_encoder" output="screen">
 		<rosparam> pinA: 2 </rosparam>
 		<rosparam> pinB: 3 </rosparam>
-		<rosparam> gearRatio: 340.0 </rosparam>
-		<rosparam> wheelRadius: 32.5 </rosparam>
+		<rosparam> gearRatio: 1500.0 </rosparam>
+		<rosparam> wheelRadius: 20.5 </rosparam>
 	</node>
 
 	<node pkg="pi_plattform" type="motor_node" name="motor_left"> 

@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 	e = new Encoder(pinA, pinB, gear, wheel);
 	ROS_INFO("Encoder are setup");
 	pub = n.advertise<std_msgs::Float32>("vel", 1);
-	ros::Timer timer = n.createTimer(ros::Duration(0.1), timerCallback);
+	ros::Timer timer = n.createTimer(ros::Duration(0.05), timerCallback);
 
 	while (ros::ok()) {
 

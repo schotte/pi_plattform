@@ -16,7 +16,7 @@ Encoder::Encoder(int nPinEncoderA, int nPinEncoderB, float gearratio, float whee
     pinMode(m_nPinEncoderA, INPUT);
     pinMode(m_nPinEncoderB, INPUT);
    
-
+	m_nTicks=0;
 
 }
 
@@ -43,6 +43,7 @@ void Encoder::readEncoder()
     }
 
     m_nTicks+= nTicks;
+	//printf("Ticks: %d\n", m_nTicks);
     m_nPreviousEncoderValueA = nEncoderA;
     m_nPreviousEncoderValueB = nEncoderB;
 }
@@ -55,11 +56,11 @@ double Encoder::getTrueSpeed()
     ros::Duration nDeltaT = currentTime - m_nLastTime;
 
     //! Calculate detected angle change for wheel and corresponding distance
-    double nAngle = m_nTicks * 360 / gearRatio ;
-    double nDistance = wheelRadius * 2.0 * PI * (nAngle / 360.0);
+    double nAngle = m_nTicks / gearRatio ;
+    double nDistance = wheelRadius * 2.0 * PI * (nAngle);
 
     //! Calculate speed from distance and time increment since last measurement
-    m_dTrueSpeed = (nDistance) / (nDeltaT.nsec);
+    m_dTrueSpeed = (nDistance) / (nDeltaT.nsec) * pow(10,9);
 
     //! Reset tick counter
     m_nTicks = 0;
