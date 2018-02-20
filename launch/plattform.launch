@@ -18,10 +18,10 @@
 	<node pkg="pi_plattform" type="motor_node" name="motor_right"> 
 	</node>
 	
-	<node pkg="pi_plattform" type="motorcontroller_node" name="motorcontroll_left"> 
+	<node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_left"> 
 		<rosparam> side: left </rosparam>
 	</node>
-	<node pkg="pi_plattform" type="motorcontroller_node" name="motorcontroll_right"> 
+	<node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_right"> 
 		<rosparam> side: right </rosparam>
 	</node>
 </launch>
