@@ -6,7 +6,7 @@
  */
 
 #include "ros/ros.h"
-#include "std_msgs/Int8.h"
+#include "std_msgs/Int16.h"
 #include "std_msgs/Float32.h"
 
 #define KP 200
@@ -18,7 +18,7 @@ ros::Publisher motor_pub;
 void controllSpeed(float currentspeed) {
 	float difference = targetspeed - currentspeed;
 	pwm += (int)(KP * difference);
-	std_msgs::Int8 msg;
+	std_msgs::Int16 msg;
 	msg.data = pwm;
 	motor_pub.publish(msg);
 }
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 	}
 
 	std::string pub_topic = std::string("/motor_") + side + std::string("/pwm");
-	motor_pub = n.advertise<std_msgs::Int8>(pub_topic, 1);
+	motor_pub = n.advertise<std_msgs::Int16>(pub_topic, 1);
 
 	std::string vel_topic = std::string("/") + side + std::string("_encoder/vel");
 	std::string targetspeed_topic = std::string("/motor_") + side + std::string("/targetvel");

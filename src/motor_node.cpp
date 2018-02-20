@@ -7,12 +7,12 @@
 
 #include "ros/ros.h"
 #include "pi_plattform/motor.h"
-#include "std_msgs/Int8.h"
+#include "std_msgs/Int16.h"
 #include "wiringPi.h"
 
 Motor* m;
 
-void callback(std_msgs::Int8 msg){
+void callback(std_msgs::Int16 msg){
 	if(msg.data==0) {
 		m->stop();
 	}else if(msg.data>0) {
