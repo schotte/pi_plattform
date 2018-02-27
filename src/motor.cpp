@@ -1,4 +1,5 @@
 #include "pi_plattform/motor.h"
+#include "ros/ros.h"
 
 Motor::Motor(int pinForward, int pinBackward, int pinPWM)
     :m_nPinMotorForward(pinForward),
@@ -26,11 +27,12 @@ int Motor::forward()
     softPwmWrite(m_nPinMotorPWM, speed);
     digitalWrite(m_nPinMotorForward, 1);
     digitalWrite(m_nPinMotorBackward, 0);
-	return 0;
+    ROS_INFO("Forward");
+    return 0;
 }
 int Motor::stop() {
-    digitalWrite(m_nPinMotorForward, 0);
-    digitalWrite(m_nPinMotorBackward, 0);
+    digitalWrite(m_nPinMotorForward, 1);
+    digitalWrite(m_nPinMotorBackward, 1);
 	return 0;
 }
 

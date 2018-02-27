@@ -13,14 +13,17 @@
 Motor* m;
 
 void callback(std_msgs::Int16 msg){
+	ROS_INFO("callback");
 	if(msg.data==0) {
 		m->stop();
 	}else if(msg.data>0) {
 		m->forward();
+		ROS_INFO("forward");
 	}else if(msg.data<0) {
 		m->backward();
 	}
 	m->setSpeed(msg.data);
+	ROS_INFO("PWM: %d", msg.data);
 }
 
 int main(int argc, char **argv) {
@@ -43,7 +46,7 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 	
-
+	ROS_INFO("A: %d, B: %d, PWM: %d", pinA, pinB, pinPWM);
 
 	m=new Motor(pinA,pinB,pinPWM);
 

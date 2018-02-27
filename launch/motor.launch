@@ -1,5 +1,5 @@
 <launch> 
-	<node pkg="pi_plattform" type="motor_node" name="motor_left"> 
+	<node pkg="pi_plattform" type="motor_node" name="motor_left" output="screen"> 
 		<rosparam> pinA: 13 </rosparam>
 		<rosparam> pinB: 14 </rosparam>
 		<rosparam> pinPWM: 12 </rosparam>
