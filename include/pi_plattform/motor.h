@@ -5,7 +5,7 @@
 #include <softPwm.h>
 
 #define MAXSPEED 200
-#define PWMCONVERSION 10
+#define PWMCONVERSION 1
 
 class Motor
 {
@@ -19,9 +19,12 @@ public:
     int backward();
     int stop();
 
+    void spin();
+
 private:
     int speed;
     unsigned int m_nPinMotorForward, m_nPinMotorBackward, m_nPinMotorPWM;
+    int pwmcounter;
 };
 
 #endif // MOTOR_H

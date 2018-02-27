@@ -52,6 +52,14 @@ int main(int argc, char **argv) {
 
 	ros::Subscriber sub = n.subscribe("pwm", 1, callback);
 
-	ros::spin();
+	ros::Rate loop_rate(5000);
+
+	while(ros::ok()) {
+		motor.spin();
+		ros::spinOnce();
+		loop_rate.sleep();
+	}
+
+
 
 }

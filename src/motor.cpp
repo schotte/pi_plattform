@@ -9,14 +9,15 @@ Motor::Motor(int pinForward, int pinBackward, int pinPWM)
     pinMode(m_nPinMotorForward,OUTPUT);
     pinMode(m_nPinMotorBackward,OUTPUT);
     pinMode(m_nPinMotorPWM,OUTPUT);
-    softPwmCreate(m_nPinMotorPWM, 0, 255);
+//    softPwmCreate(m_nPinMotorPWM, 0, 255);
     stop();
 	speed=0;
+	pwmcounter =0;
 }
 
 int Motor::backward()
 {
-    softPwmWrite(m_nPinMotorPWM, speed);
+//    softPwmWrite(m_nPinMotorPWM, speed);
     digitalWrite(m_nPinMotorBackward, 1);
     digitalWrite(m_nPinMotorForward, 0);
 	return 0;
@@ -24,7 +25,7 @@ int Motor::backward()
 
 int Motor::forward()
 {
-    softPwmWrite(m_nPinMotorPWM, speed);
+//    softPwmWrite(m_nPinMotorPWM, speed);
     digitalWrite(m_nPinMotorForward, 1);
     digitalWrite(m_nPinMotorBackward, 0);
     ROS_INFO("Forward");
@@ -44,4 +45,16 @@ int Motor::setSpeed(double value){
         speed = MAXSPEED;
     }
 	return 0;
+}
+
+void Motor::spin() {
+	if(pwmcounter<speed) {
+		digitalWrite(m_nPinMotorPWM, 1);
+	}else {
+		digitalWrite(m_nPinMotorPWM, 0);
+	}
+	pwmcounter++;
+	if(pwmcounter >= MAXSPEED) {
+		pwmcounter=0;
+	}
 }
