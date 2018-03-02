@@ -1,8 +1,6 @@
 #include "pi_plattform/encoder.h"
 
-#define RATE 1 /*!< Update interval [ms] */
-#define WHEEL_RADIUS 32.5 /*!< Wheel radius [mm] */
-#define GEAR_TRANSLATION 340 /*!< Gear translation */
+
 #define PI 3.141
 
 Encoder::Encoder(int nPinEncoderA, int nPinEncoderB, float gearratio, float wheelradius)

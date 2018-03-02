@@ -2,15 +2,15 @@
 	<node pkg="pi_plattform" type="encoder_node" name="left_encoder" output="screen">
 		<rosparam> pinA: 7 </rosparam>
 		<rosparam> pinB: 0 </rosparam>
-		<rosparam> gearRatio: 1500.0 </rosparam>
+		<rosparam> gearRatio: 420.0 </rosparam>
 		<rosparam> wheelRadius: 0.0326 </rosparam>
 	</node>
 
 	<node pkg="pi_plattform" type="encoder_node" name="right_encoder" output="screen">
 		<rosparam> pinA: 2 </rosparam>
 		<rosparam> pinB: 3 </rosparam>
-		<rosparam> gearRatio: 1500.0 </rosparam>
-		<rosparam> wheelRadius: 20.5 </rosparam>
+		<rosparam> gearRatio: 420.0 </rosparam>
+		<rosparam> wheelRadius: 0.0326 </rosparam>
 	</node>
 
 	<node pkg="pi_plattform" type="motor_node" name="motor_left"> 
@@ -19,8 +19,8 @@
 		<rosparam> pinPWM: 12 </rosparam>
 	</node>
 	<node pkg="pi_plattform" type="motor_node" name="motor_right"> 
-		<rosparam> pinA: 21 </rosparam>
-		<rosparam> pinB: 22 </rosparam>
+		<rosparam> pinA: 22 </rosparam>
+		<rosparam> pinB: 21 </rosparam>
 		<rosparam> pinPWM: 23 </rosparam>
 	</node>
 	
