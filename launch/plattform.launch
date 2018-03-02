@@ -24,10 +24,10 @@
 		<rosparam> pinPWM: 23 </rosparam>
 	</node>
 	
-	<node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_left"> 
+	<!--node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_left"> 
 		<rosparam> side: left </rosparam>
 	</node>
 	<node pkg="pi_plattform" type="motorcontroll_node" name="motorcontroll_right"> 
 		<rosparam> side: right </rosparam>
-	</node>
+	</node-->
 </launch>
