@@ -28,7 +28,6 @@ int Motor::forward()
 //    softPwmWrite(m_nPinMotorPWM, speed);
     digitalWrite(m_nPinMotorForward, 1);
     digitalWrite(m_nPinMotorBackward, 0);
-    ROS_INFO("Forward");
     return 0;
 }
 int Motor::stop() {

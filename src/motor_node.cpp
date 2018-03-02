@@ -21,8 +21,9 @@ void callback(std_msgs::Int16 msg){
 		ROS_INFO("forward");
 	}else if(msg.data<0) {
 		m->backward();
+		ROS_INFO("Backward");
 	}
-	m->setSpeed(msg.data);
+	m->setSpeed(abs(msg.data));
 	ROS_INFO("PWM: %d", msg.data);
 }
 
@@ -55,7 +56,7 @@ int main(int argc, char **argv) {
 	ros::Rate loop_rate(5000);
 
 	while(ros::ok()) {
-		motor.spin();
+		m->spin();
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
