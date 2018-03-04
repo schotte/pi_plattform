@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 	}
 
 	ROS_INFO("A: %d, B:%d", pinA, pinB);
-	ros::Rate loop_rate(1000);
+	ros::Rate loop_rate(3000);
 	e = new Encoder(pinA, pinB, gear, wheel);
 	ROS_INFO("Encoder are setup");
 	pub = n.advertise<std_msgs::Float32>("vel", 1);
