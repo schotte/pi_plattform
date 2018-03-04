@@ -16,6 +16,10 @@ int pwm;
 ros::Publisher motor_pub;
 
 void controllSpeed(float currentspeed) {
+	if(targetspeed <= 0.01 && targetspeed >= -0.01) {
+		pwm = 0;
+		return;
+	}
 	float difference = targetspeed - currentspeed;
 	pwm += (int)(KP * difference);
 	std_msgs::Int16 msg;
