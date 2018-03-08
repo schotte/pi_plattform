@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/pi/wiringPi)
+FIND_LIBRARY(HC-SR04_LIBRARY sonarLib /home/pi/libs/HC-SR04-Raspberry-Pi-C-)
 
 catkin_package(
 #  INCLUDE_DIRS include
@@ -65,6 +66,12 @@ target_link_libraries(motorcontroll_node
 )
 #add_dependencies(motorcontroll_node wiringPi)
 
-
+add_executable(sonar_node src/HC-SR04_node.cpp)
+target_link_libraries(encoder_node 
+	${catkin_LIBRARIES} 
+	${WIRINGPI_LIBRARY}
+	${HC-SR04_LIBRARY}
+)
+add_dependencies(encoder_node wiringPi sonarLib)
 
 
