@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 	msg.field_of_view = 0.261799;
 
 	while(ros::ok()) {
-		msg.range = sonar.distance(30000);
+		msg.range = sonar.distance(30000)/100;
 		msg.header.stamp = ros::Time::now();
 		pub.publish(msg);
 		ros::spinOnce();
