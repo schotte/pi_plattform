@@ -8,7 +8,7 @@
 #include "ros/ros.h"
 #include "sensor_msgs/Range.h"
 #include "wiringPi.h"
-#include "libSonar.h"
+#include "HC-SR04-Raspberry-Pi-C-/libSonar.h"
 
 int main(int argc, char **argv) {
 
