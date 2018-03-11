@@ -42,6 +42,7 @@ int main(int argc, char **argv) {
 	while(ros::ok()) {
 		msg.range = sonar.distance(30000);
 		msg.header.stamp = ros::Time::now();
+		pub.publish(msg);
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
