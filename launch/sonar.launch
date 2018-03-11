@@ -1,0 +1,6 @@
+<launch> 
+	<node pkg="pi_plattform" type="sonar_node" name="sonar" output="screen"> 
+		<rosparam> pinTrig: 29 </rosparam>
+		<rosparam> pinEcho: 28 </rosparam>
+	</node>
+</launch>
